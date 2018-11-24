@@ -20,7 +20,7 @@ defmodule Eligit.MixProject do
   def application do
     [
       mod: {Eligit.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edelivery]
     ]
   end
 
@@ -33,6 +33,7 @@ defmodule Eligit.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:edeliver, ">= 1.6.0"},
       {:distillery, "~> 2.0"},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
