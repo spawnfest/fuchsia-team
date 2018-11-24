@@ -2,14 +2,14 @@ APP="eligit"
 
 BUILD_HOST="elig.it"
 BUILD_USER="root"
-BUILD_AT="/home/eligit/app_build"
+BUILD_AT="/home/root/app_build"
 
 PRODUCTION_HOSTS="elig.it" 
 PRODUCTION_USER="root" 
 DELIVER_TO="/home/eligit/app_release" 
 
 pre_erlang_get_and_update_deps() {
-  local _prod_secret_path="/home/eligit/app_config/prod.secret.exs"
+  local _prod_secret_path="/home/root/app_config/prod.secret.exs"
   if [ "$TARGET_MIX_ENV" = "prod" ]; then
     __sync_remote "
       ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'

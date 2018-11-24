@@ -20,7 +20,7 @@ defmodule Eligit.MixProject do
   def application do
     [
       mod: {Eligit.Application, []},
-      extra_applications: [:logger, :runtime_tools, :edelivery]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
