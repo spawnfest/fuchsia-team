@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :eligit, EligitWeb.Endpoint,
   http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
+  url: [host: "localhost", port: System.get_env("PORT") || 4000],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -78,5 +78,5 @@ config :eligit, EligitWeb.Endpoint,
 config :eligit, Eligit.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  ssl: true,
+  ssl: false,
   pool_size: 2
