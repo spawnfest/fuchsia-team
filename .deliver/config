@@ -6,7 +6,7 @@ BUILD_AT="/home/root/app_build"
 
 PRODUCTION_HOSTS="elig.it" 
 PRODUCTION_USER="root" 
-DELIVER_TO="/home/eligit/app_release" 
+DELIVER_TO="/home/root/app_release" 
 
 pre_erlang_get_and_update_deps() {
   local _prod_secret_path="/home/root/app_config/prod.secret.exs"
