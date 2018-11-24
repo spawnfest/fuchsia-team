@@ -1,4 +1,9 @@
+AUTO_VERSION=commit-count+git-revision+branch-unless-master
 APP="eligit"
+
+BUILD_CMD=mix
+RELEASE_CMD=mix
+USING_DISTILLERY=true
 
 BUILD_HOST="elig.it"
 BUILD_USER="root"
@@ -15,4 +20,26 @@ pre_erlang_get_and_update_deps() {
       ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
     "
   fi
+}
+
+pre_erlang_clean_compile() {
+ status "Building static assets"
+ __sync_remote "
+   [ -f ~/.profile ] && source ~/.profile
+   set -e
+   cd '$BUILD_AT/assets'
+
+   mkdir -p priv/static
+   APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm install
+   APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm run deploy
+ "
+
+ status "Running phx.digest"
+ __sync_remote "
+   [ -f ~/.profile ] && source ~/.profile
+   set -e #
+   cd '$BUILD_AT'
+
+   APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
+ "
 }
