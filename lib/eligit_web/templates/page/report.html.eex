@@ -8,8 +8,28 @@
             <%= @url %>
             <%= @clone_status %>
             <%= @repo.path %>
-            <%= @fame %>
           </div>
+        </div>
+        <div class="row">
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Ranking</th>
+                <th scope="col">Commits count</th>
+                <th scope="col">Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= for {committer, i} <- Enum.with_index(@fame) do %>
+                <tr>
+                  <td><%= i+1 %></td>
+                  <td><%= Enum.at(committer,0) %></td>
+                  <td><%= Enum.at(committer,1) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
         </div>
       </div>
     </header>

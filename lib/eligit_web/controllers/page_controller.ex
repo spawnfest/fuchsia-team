@@ -10,14 +10,15 @@ defmodule EligitWeb.PageController do
 
   def create(conn, %{ "repo" => %{ "url" => url }} = params) do
     # First win!!! TODO: refactor all this shit! =D
-    repo_local_path = "/tmp/eligit"
+    random_string = :crypto.strong_rand_bytes(12) |> Base.url_encode64 |> binary_part(0, 12)
+    repo_local_path = "/tmp/#{random_string}"
     File.rm_rf!(repo_local_path)
     File.mkdir!(repo_local_path)
     { clone_status, repo } = Git.clone [url, repo_local_path]
 
     { :ok, pid } = Gitstat.Fame.start_link()
     fame = Gitstat.Fame.run(pid, repo_local_path) |> Enum.reject &is_nil/1
-
+    File.rm_rf!(repo_local_path)
     render(conn, "report.html",
       url: url,
       clone_status: clone_status,
