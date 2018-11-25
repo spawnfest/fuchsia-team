@@ -33,7 +33,7 @@ defmodule EligitWeb.PageController do
     repo_local_path = "/tmp/#{random_string}"
     File.rm_rf!(repo_local_path)
     File.mkdir!(repo_local_path)
-    { clone_status, repo } = Git.clone [url, repo_local_path]
+    { clone_status, repo } = Git.clone [url, "--depth=1", repo_local_path]
 
 
     { :ok, pid } = Gitstat.Cake.start_link()
