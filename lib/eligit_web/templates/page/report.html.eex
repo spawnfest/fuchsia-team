@@ -6,6 +6,9 @@
           <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">Stats for repo</h1>
             <%= @url %>
+            <%= @clone_status %>
+            <%= @repo.path %>
+            <%= @fame %>
           </div>
         </div>
       </div>
