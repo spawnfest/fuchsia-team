@@ -43,7 +43,7 @@ defmodule Gitstat.Cake do
     receive do
       { :ok,  %{ size: size, language: language } = payload } ->
         result = Map.update(result, language, size, &(&1 + size))
-        Process.sleep(250)
+        Process.sleep(100) # This is used only to slow down and see the pie cart :)
         send receiver, { :partial, result }
         process_results(receiver, result, expected_messages - 1)
       { :error, payload } ->
