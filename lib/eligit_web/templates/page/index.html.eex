@@ -17,6 +17,23 @@
                 </div>
               </div>
             <% end %>
+
+            <%= form_tag Routes.async_report_path(@conn, :async_create), class: 'remote' do %>
+              <div class="form-row">
+                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <%= text_input :repo, :url, class: "form-control form-control-lg", placeholder: "http://" %>
+                </div>
+                <div class="col-12 col-md-3">
+                  <%= submit "Give me stats!", class: "btn btn-block btn-lg btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 mx-auto">
+            <h1> Cake output </h1>
+            <div id='cake-output'></div>
           </div>
         </div>
       </div>

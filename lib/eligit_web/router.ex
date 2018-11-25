@@ -18,6 +18,7 @@ defmodule EligitWeb.Router do
 
     get "/", PageController, :index
     post "/", PageController, :create, as: :report
+    post "/async", PageController, :async_create, as: :async_report
   end
 
   # Other scopes may use custom stacks.

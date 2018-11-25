@@ -14,4 +14,24 @@ import "phoenix_html"
 // Import local files
 //
 // Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+import socket from "./socket"
+
+$(document).ready( () => {
+ $("body").on("submit", "form.remote", function(e) {
+    e.preventDefault();
+    let $form = $(this);
+
+    $.ajax({
+      method: $form.attr("method"),
+      url: $form.attr("action"),
+      data: $form.serialize(),
+      dataType: "script",
+      beforeSend: function(_jqXHR, _settings) {
+        // add a loader or whatever
+      },
+      complete: function(_jqXHR,_textStatus) {
+        // remove a loader or whatever
+      }
+    });
+  });
+});
