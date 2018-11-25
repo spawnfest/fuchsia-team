@@ -10,6 +10,11 @@ Right know we only show the programming languages used in the repo like:
 
 ## Local setup
 
+Requirements:
+
+  * Elixir 1.7.4
+  * NodeJS
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
