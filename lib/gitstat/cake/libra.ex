@@ -23,6 +23,6 @@ defmodule Gitstat.Cake.Libra do
   defp stat(path) do
     %{size: size, type: type} = path |> File.stat!
     ext = Path.extname(path)
-    { :ok, %{size: size, type: type, ext: ext, language: Gitstat.file_types[ext]} }
+    { :ok, %{size: size, type: type, ext: ext, language: Gitstat.file_type(ext)} }
   end
 end
