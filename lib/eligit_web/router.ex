@@ -17,6 +17,7 @@ defmodule EligitWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/", PageController, :create, as: :report
   end
 
   # Other scopes may use custom stacks.
