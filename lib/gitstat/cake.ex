@@ -41,6 +41,8 @@ defmodule Gitstat.Cake do
 
   defp process_results(receiver, result, expected_messages) do
     receive do
+      { :ok,  %{ language: nil } = payload } ->
+        process_results(receiver, result, expected_messages - 1)
       { :ok,  %{ size: size, language: language } = payload } ->
         result = Map.update(result, language, size, &(&1 + size))
         Process.sleep(100) # This is used only to slow down and see the pie cart :)

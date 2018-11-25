@@ -15,16 +15,11 @@ defmodule Gitstat do
     ".slim" => "html",
     ".haml" => "html",
     ".eex" => "html",
-    ".md" => "text",
-    ".txt" => "text",
-    ".sql" => "sql",
-    ".yaml" => "yaml",
-    ".yml" => "yaml",
-    ".json" => "json",
-    ".ex" => "elixir"
+    ".ex" => "elixir",
+    ".exs" => "elixir"
   }
 
   def file_type(extension) do
-    Map.get(@file_types, extension, "other")
+    Map.get(@file_types, extension)
   end
 end
