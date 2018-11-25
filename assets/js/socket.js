@@ -59,7 +59,8 @@ let channel = socket.channel("room:lobby", {})
 
 channel.on("cake", payload => {
   console.log(payload);
-  $("#cake-output").html(JSON.stringify(payload));
+  const chart = Chartkick.charts["cake-output"]
+  chart.updateData(payload.result);
 })
 
 channel.join()

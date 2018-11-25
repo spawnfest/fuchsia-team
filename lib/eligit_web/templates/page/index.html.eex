@@ -7,33 +7,32 @@
             <h1 class="mb-5">Stats for repo</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <%= form_tag Routes.report_path(@conn, :create) do %>
-              <div class="form-row">
-                <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <%= text_input :repo, :url, class: "form-control form-control-lg", placeholder: "http://" %>
-                </div>
-                <div class="col-12 col-md-3">
-                  <%= submit "Give me stats!", class: "btn btn-block btn-lg btn-primary" %>
-                </div>
-              </div>
-            <% end %>
+            <%# <%= form_tag Routes.report_path(@conn, :create) do %1> %>
+            <%#   <div class="form-row"> %>
+            <%#     <div class="col-12 col-md-9 mb-2 mb-md-0"> %>
+            <%#       <%= text_input :repo, :url, class: "form-control form-control-lg", placeholder: "http://" %1> %>
+            <%#     </div> %>
+            <%#     <div class="col-12 col-md-3"> %>
+            <%#       <%= submit "Give me stats!", class: "btn btn-block btn-lg btn-primary" %1> %>
+            <%#     </div> %>
+            <%#   </div> %>
+            <%# <% end %1> %>
 
             <%= form_tag Routes.async_report_path(@conn, :async_create), class: 'remote' do %>
               <div class="form-row">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  <%= text_input :repo, :url, class: "form-control form-control-lg", placeholder: "http://" %>
+                  <%= text_input :repo, :url, class: "form-control form-control-lg", placeholder: "https://", value: "https://github.com/phoenixframework/phoenix.git" %>
                 </div>
                 <div class="col-12 col-md-3">
-                  <%= submit "Give me stats!", class: "btn btn-block btn-lg btn-primary" %>
+                  <%= submit "Give me stats!", class: "btn btn-block btn-lg btn-primary", id: 'cake-submit' %>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
         <div class="row">
-          <div class="col-xl-12 mx-auto">
-            <h1> Cake output </h1>
-            <div id='cake-output'></div>
+          <div class="col-xl-12 mx-auto mt-5">
+            <div id='cake-output' style='height: 500px'></div>
           </div>
         </div>
       </div>

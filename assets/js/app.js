@@ -34,4 +34,10 @@ $(document).ready( () => {
       }
     });
   });
+  new Chartkick.PieChart("cake-output", []);
+  $("#cake-submit").on("click", (e) => {
+    const $button = $("#cake-submit");
+    $button.attr('disabled', 'disabled');
+    $button.html('Cloning....');
+  })
 });
