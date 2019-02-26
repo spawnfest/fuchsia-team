@@ -35,9 +35,11 @@ $(document).ready(() => {
     });
   });
   new Chartkick.PieChart("cake-output", []);
-  $("#cake-submit").on("click", (e) => {
+  $("#cake-submit").on("click", event => {
+    event.preventDefault();
     const $button = $("#cake-submit");
-    $button.attr('disabled', 'disabled');
-    $button.html('Cloning....');
-  })
+    $button.attr("disabled", "disabled");
+    $button.text("Cloning....");
+    $("form.remote").submit();
+  });
 });
