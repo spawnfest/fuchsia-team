@@ -42,7 +42,7 @@ defmodule EligitWeb.PageController do
 
     File.rm_rf!(repo_local_path)
 
-    text conn, "OK"
+    text conn, "console.log('OMG')"
   end
 
   defp broadcast_cakes do
